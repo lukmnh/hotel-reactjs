@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import RoomTypeSelector from "../common/RoomTypeSelector";
 import { addRoom } from "../utils/ApiFunction";
-// import { Link } from "react-router-dom"
 
 const AddRoom = () => {
   const [newRoom, setNewRoom] = useState({
@@ -10,9 +10,15 @@ const AddRoom = () => {
     roomPrice: "",
   });
 
+  const navigate = useNavigate();
+
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [imagePreview, setImagePreview] = useState("");
+
+  const handleClickReturn = () => {
+    navigate("/room-available");
+  };
 
   const handleRoomInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +42,7 @@ const AddRoom = () => {
         newRoom.roomType,
         newRoom.roomPrice
       );
-      if (success) {
+      if (success !== undefined) {
         setSuccessMessage("A new room was added successfully!");
         setNewRoom({ photo: null, roomType: "", roomPrice: "" });
         setImagePreview("");
@@ -119,6 +125,15 @@ const AddRoom = () => {
               <button type="submit" className="btn btn-outline-primary ml-5">
                 Save Room
               </button>
+              <div className="d-flex justify-content-end">
+                <button
+                  type="button"
+                  className="btn btn-warning"
+                  onClick={handleClickReturn}
+                >
+                  Return
+                </button>
+              </div>
             </div>
           </form>
         </div>

@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.react-confirm-alert {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /*centering alert*/
+  position: fixed;
+  z-index: 9999;
+}
+
+.react-confirm-alert .react-confirm-alert-body {
+  text-align: center;
+  background-color: lightgrey;
+}
+
+.react-confirm-alert .react-confirm-alert-button-group {
+  justify-content: center;
+}

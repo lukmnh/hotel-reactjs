@@ -20,7 +20,9 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
     if (newRoomType !== "") {
       setRoomTypes([...roomTypes, newRoomType]);
       setNewRoomType("");
+      // hide the input form adding the new room type and reset the value
       setShowNewRoomTypeInput(false);
+      handleNewRoomTypeInputChange({ target: { name: "roomType" }, value: "" });
     }
   };
 
